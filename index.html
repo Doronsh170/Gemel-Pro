@@ -55,7 +55,7 @@ function productType(x){
 }
 function pensionKind(x){if(x.kind!=='pension')return '';if(x.category==='קרנות חדשות')return 'comprehensive';if(x.category==='קרנות כלליות')return 'supplementary';return '';}
 function matchesPensionKind(x){return product.value!=='pension'||!pensionType.value||pensionKind(x)===pensionType.value;}
-function syncPensionType(){const active=product.value==='pension';$('pensionTypeField').style.display=active?'block':'none';if(!active)pensionType.value='';}
+function syncPensionType(){const active=product.value==='pension';$('pensionTypeField').style.display=active?'block':'none';if(!active)pensionType.value='';const child=product.value==='child';if(child)population.value='regular';population.disabled=child;}
 function trackType(x){
  if(x.kind==='gemel'){
   const sub=(x.sub||'').trim(), special=(x.special||'').trim();
