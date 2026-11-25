@@ -59,6 +59,10 @@ function syncPensionType(){const active=product.value==='pension';$('pensionType
 function trackType(x){
  if(x.kind==='gemel'){
   const sub=(x.sub||'').trim(), special=(x.special||'').trim();
+  if(productType(x)==='child'){
+   if(x.code==='9414'&&sub==='כללי')return 'חיסכון לילד -חוסכים המעדיפים סיכון בינוני';
+   if(x.code==='9420'&&sub==='מניות')return 'חיסכון לילד -חוסכים המעדיפים סיכון גבוה';
+  }
   return sub||special||'לא מסווג';
  }
  const n=(x.name||'').replace(/S1;P|S&P|S\s*P/gi,'S&P').toLowerCase();
